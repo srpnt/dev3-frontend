@@ -47,6 +47,7 @@
                 </div>
             </div>
             <ng-container *ngIf="authRequests$ | async as authRequests; else noRequests">
+                <div *ngIf="authRequests.requests.length === 0; then emptyRequests"></div>
                 <div *ngFor="let authRequest of authRequests.requests" 
                 class="flex flex-row items-center py-3 text-gray-700 text-sm font-medium border-b">
                     <div class="w-3/12 text-center text-xs font-semibold flex flex-row justify-center items-center">
@@ -101,4 +102,10 @@
     <div class="py-16 flex flex-row justify-center">
         <app-spinner></app-spinner>
     </div> 
+</ng-template>
+
+<ng-template #emptyRequests>
+    <div class="w-full py-16 border border-gray-200 rounded-b-lg flex flex-row justify-center text-sm text-gray-500">
+        No authorization requests
+    </div>
 </ng-template>

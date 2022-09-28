@@ -25,7 +25,8 @@ export class ContractDeploymentService {
         private errorService: ErrorService,
         private gasService: GasService) {}
 
-    createDeploymentRequestBase(data: ContractDeploymentParams): Observable<ContractDeploymentRequestResponse> {
+    createDeploymentRequestBase(data: ContractDeploymentParams): 
+        Observable<ContractDeploymentRequestResponse> {
         return this.http
             .post<ContractDeploymentRequestResponse>(`${this.path}/deploy`, 
                 data, true, true, true)
@@ -34,7 +35,8 @@ export class ContractDeploymentService {
     createDeploymentRequest(contractId: string, 
         alias: string,
         constructorParams: ConstructorParam[],
-        screenConfig: ScreenConfig): Observable<ContractDeploymentRequestResponse> {
+        screenConfig: ScreenConfig): 
+        Observable<ContractDeploymentRequestResponse> {
             
         const queryValue = this.preferenceQuery.getValue()
         return this.createDeploymentRequestBase({
@@ -49,13 +51,15 @@ export class ContractDeploymentService {
         })
     }
 
-    getContractDeploymentRequest(deploymentRequestID: string): Observable<ContractDeploymentRequestResponse> {
+    getContractDeploymentRequest(deploymentRequestID: string): 
+        Observable<ContractDeploymentRequestResponse> {
         return this.http
             .get<ContractDeploymentRequestResponse>(`${this.path}/deploy/${deploymentRequestID}`, { }, true, false, true)
     }
 
     getContractDeploymentRequests(projectID: string, deployedOnly: boolean = false,
-        contractImplements: string[] = []): Observable<ContractDeploymentRequests> {
+        contractImplements: string[] = []):
+        Observable<ContractDeploymentRequests> {
         
         return this.http
             .get<ContractDeploymentRequests>(`${this.path}/deploy/by-project/${projectID}`, {

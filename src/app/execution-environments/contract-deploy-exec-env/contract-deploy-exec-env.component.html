@@ -94,22 +94,10 @@
                             <div class="flex flex-col w-full rounded-lg">
                                 <div *ngFor="let param of deploymentRequest.constructor_params; let i = index;"
                                     class="mr-1 mb-2 w-full text-sm flex flex-col">
-                                    <div class="font-semibold flex flex-row justify-between items-start w-full">
+                                    <div class="font-semibold flex flex-row justify-start items-center w-full">
                                         <div>
-                                            {{manifest.constructors[0].inputs[i].name}}:
+                                            {{manifest.constructors.at(0)?.inputs?.at(i)?.name}}:
                                         </div>
-                                        <div class="font-light ml-2" *ngIf="param.type.endsWith('[]'); else notArray">
-                                            <div *ngFor="let item of param.value">
-                                                <div *ngIf="param.type.startsWith('address'); else nonAddressType">
-                                                    {{item | addrShort}}
-                                                </div>
-                                                <ng-template #nonAddressType>
-                                                    {{item}}
-                                                </ng-template>
-                                            </div>
-                                        </div>
-
-                                        <ng-template #notArray>
                                             <div *ngIf="param.type !== 'address'" class="ml-1 font-light overflow-x-scroll flex flex-row">
                                                 {{param.value}}
                                             </div>
@@ -117,8 +105,6 @@
                                                 {{param.value | addrShort}}
                                                 <app-explorer-link [value]="param.value"></app-explorer-link>
                                             </div>
-                                        </ng-template>
-                                        
                                     </div>
                                     <div class="font-light overflow-x-scroll w-full flex flex-row
                                      text-gray-500 text-xs">{{manifest.constructors[0].inputs[i].description}}</div>

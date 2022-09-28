@@ -22,16 +22,8 @@ export class SwapUniswapService {
 
   // chainIdToName mapping needs to be in sync with uniswap mappings
   // source: https://github.com/Uniswap/interface/blob/3153db9f73e1e9b1dcf1b74bb7d5059176162172/src/constants/chains.ts#L21-L33
-  chainIdToName: { [key in ChainID]: string } = {
-    [ChainID.MATIC_MAINNET]: 'polygon',
-    [ChainID.MUMBAI_TESTNET]: 'polygon_mumbai',
-    [ChainID.GOERLI_TESTNET]: 'goerli',
-    [ChainID.AURORA_MAINNET]: 'aurora',
-    [ChainID.OPTIMISM]: 'optimism',
-    [ChainID.ARBITRUM]: 'arbitrum',
-    [ChainID.AVALANCHE]: 'avalanche'
-  }
-
+  chainIdToName = 'abc'
+  
   constructor(
     private signer: SignerService,
     private issuerService: IssuerService,
